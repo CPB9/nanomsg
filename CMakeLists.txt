@@ -44,5 +44,11 @@ endif ()
 
 #  Build the library itself.
 
-add_subdirectory (src)
+add_subdirectory (src/nanomsg)
+
+get_directory_property(HAS_PARENT_SCOPE PARENT_DIRECTORY)
+if(HAS_PARENT_SCOPE)
+    set(NANOMSG_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src PARENT_SCOPE)
+    set(NANOMSG_LIBRARIES nanomsg PARENT_SCOPE)
+endif()
 
