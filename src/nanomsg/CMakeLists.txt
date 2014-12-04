@@ -259,7 +259,12 @@ if (WIN32)
     )
 endif ()
 
-add_library (nanomsg STATIC ${NN_SOURCES})
+add_library (nanomsg SHARED ${NN_SOURCES})
+
+set_target_properties (nanomsg
+    PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+)
 
 add_definitions (-DNN_EXPORTS)
 add_definitions (-DNN_USE_LITERAL_IFADDR)
